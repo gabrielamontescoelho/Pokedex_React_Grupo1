@@ -27,13 +27,6 @@ export default function PokemonDetails({ route }: any) {
         getDetails();
     }, [])
 
-    //  if (loading) {
-    //         return (
-    //             <View style={styles.loading}>
-    //                 <ActivityIndicator size={'small'} color={"#c91616"} />
-    //             </View>
-    //         )
-    //     }
 
     return (
         <View style={styles.container}>
@@ -53,7 +46,7 @@ export default function PokemonDetails({ route }: any) {
             <Text>Altura: {pokemon ? (pokemon.height / 10).toFixed(1) : ""} metros</Text>
             <Text>Peso: {pokemon ? (pokemon.weight / 10).toFixed(1) : ""} kg</Text>
             <Text>Experiência base: {pokemon?.base_experience}</Text>
-            {/* <Image style={styles.image}> </Image> */}
+         
             </View>
         </View>
 
