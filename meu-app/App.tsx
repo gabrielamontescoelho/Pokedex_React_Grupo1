@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Pokemon from './src/app/screens/pokemon';
+import PokemonDetails from './src/app/screens/pokemonDetails';
 
 
 export default function App() {
@@ -16,9 +17,9 @@ export default function App() {
             options={{ title: 'Pokemon' }}
         />
         <Stack.Screen
-            name=""
-            component={}
-            options={{ title: '' }}
+          name="PokemonDetails"
+          component={PokemonDetails}
+          options={{ title: 'Detalhes do Pokemon' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
