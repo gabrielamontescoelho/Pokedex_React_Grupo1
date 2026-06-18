@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
     
 const URL = "https://pokeapi.co/api/v2/pokemon?limit=151"
 const IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
@@ -14,6 +15,7 @@ export default function Pokemon ({ navigation }: any){
     const [pokemon, setPokemon] = useState<PokemonProps[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
+    const [busca, setBusca] = useState('');
 
     async function listarPokemon() {
         setLoading(true);
@@ -48,12 +50,23 @@ export default function Pokemon ({ navigation }: any){
     return `${IMAGE}${pokemonId}.png`;
     };
 
+    const pokemonFiltro = pokemon.filter((item)=>
+        item.name.toLocaleLowerCase().includes(busca.toLowerCase())
+    );
+
+
     return(
         <View style={styles.container}>
             <Text style={styles.title}>||- Pokédex -||</Text>
-            {//loading ? <ActivityIndicator size={'small'} color={"#c91616"}/>: 
+
+            <TextInput style={styles.inputBusca}
+                placeholder="Buscar Pokémon"
+                value={busca}
+                onChangeText={(texto) => setBusca(texto)}
+            />
+
             <FlatList
-                data={pokemon}
+                data={pokemonFiltro}
                 keyExtractor={(item) => item.name}
                 renderItem={({ item }) => (
                     <TouchableOpacity style={styles.card}
@@ -70,7 +83,7 @@ export default function Pokemon ({ navigation }: any){
                     </TouchableOpacity>
                 )}
                 />
-            }
+            
             {/*
             {pokemon.map((item:PokemonProps)=>
             <View key={item.url}>
@@ -86,13 +99,11 @@ export default function Pokemon ({ navigation }: any){
     const styles = StyleSheet.create({
         container:{
             flex:1,
-            backgroundColor:"#f32121",
+            backgroundColor:"#f33939",
             alignItems:"stretch",
             justifyContent:"flex-start",
             padding: 10,
             marginBottom: 10
-            
-
         },
         loading:{
             flex:1,
@@ -119,4 +130,13 @@ export default function Pokemon ({ navigation }: any){
             fontSize: 12,
             marginTop: 4,
         },
+        inputBusca: {
+            backgroundColor: '#fffff',
+            borderRadius: 8,
+            padding: 12,
+            marginBottom: 15,
+            fontSize: 16,
+            borderWidth: 1,
+            borderColor: '#29292e',
+        }
     });
