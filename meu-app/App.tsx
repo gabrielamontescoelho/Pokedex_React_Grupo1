@@ -1,35 +1,45 @@
-import { StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Pokemon from './src/app/screens/pokemon';
-import PokemonDetails from './src/app/screens/pokemonDetails';
+import { StyleSheet, View, useWindowDimensions } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
+import Pokemon from "./src/app/screens/pokemon";
+import PokemonDetails from "./src/app/screens/pokemonDetails";
+
+const Stack = createStackNavigator();
 
 export default function App() {
-  const Stack = createStackNavigator<any>();
+  const { height } = useWindowDimensions();
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
+    <View style={[styles.appContainer, { height }]}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            cardStyle: {
+              flex: 1,
+            },
+          }}
+        >
+          <Stack.Screen
             name="Pokemon"
             component={Pokemon}
-            options={{ title: 'Pokemon' }}
-        />
-        <Stack.Screen
-          name="PokemonDetails"
-          component={PokemonDetails}
-          options={{ title: 'Detalhes do Pokemon' }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+            options={{ title: "Pokemon" }}
+          />
+
+          <Stack.Screen
+            name="PokemonDetails"
+            component={PokemonDetails}
+            options={{ title: "Detalhes do Pokemon" }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "100%",
   },
 });
