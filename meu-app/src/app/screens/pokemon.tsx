@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
     
- const URL = "https://pokeapi.co/api/v2/pokemon?limit=151"
- const IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
- 
+const URL = "https://pokeapi.co/api/v2/pokemon?limit=151"
+const IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+
 type PokemonProps={
     name:string;
     url:string;
@@ -66,6 +66,7 @@ export default function Pokemon ({ navigation }: any){
                         style={styles.image}
                     />
                     <Text>{maiuscula(item.name)}</Text>
+                    <Text style={styles.tapText}>Toque para ver detalhes</Text>
                     </TouchableOpacity>
                 )}
                 />
@@ -113,5 +114,9 @@ export default function Pokemon ({ navigation }: any){
             width: 60,
             height: 60,
             marginRight: 10,
+        },
+        tapText: {
+            fontSize: 12,
+            marginTop: 4,
         },
     });

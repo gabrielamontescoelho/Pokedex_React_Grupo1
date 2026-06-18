@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 export default function PokemonDetails({ route }: any) {
 
@@ -39,8 +39,20 @@ export default function PokemonDetails({ route }: any) {
         <View style={styles.container}>
             <View>
             <Text>Pokemon Card</Text>
+            <Image
+                source={{ uri: pokemon?.sprites?.front_default }}
+                style={styles.image}
+            />
+            <Text>Número/ID: {pokemon?.id}</Text>
             <Text>Nome: {pokemon?.name}</Text>
-            <Text>Altura: {pokemon?.height} metros</Text>
+            <Text>
+                Tipo: {pokemon?.types?.map((item: any) => item.type.name).join(", ")}</Text>
+            <Text>
+                Habilidades: {pokemon?.abilities?.map((item: any) => item.ability.name).join(", ")}
+            </Text>
+            <Text>Altura: {pokemon ? (pokemon.height / 10).toFixed(1) : ""} metros</Text>
+            <Text>Peso: {pokemon ? (pokemon.weight / 10).toFixed(1) : ""} kg</Text>
+            <Text>Experiência base: {pokemon?.base_experience}</Text>
             {/* <Image style={styles.image}> </Image> */}
             </View>
         </View>
@@ -76,8 +88,9 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     image: {
-        width: 60,
-        height: 120,
-        marginRight: 120,
+    width: 150,
+    height: 150,
+    alignSelf: "center",
+    marginBottom: 10,
     },
 });
