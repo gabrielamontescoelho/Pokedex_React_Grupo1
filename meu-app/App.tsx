@@ -1,35 +1,27 @@
-import { StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Pokemon from './src/app/screens/pokemon';
-import PokemonDetails from './src/app/screens/pokemonDetails';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
+import Home from "./src/app/screens/Home";
+import PokemonDetails from "./src/app/screens/pokemonDetails";
 
 export default function App() {
   const Stack = createStackNavigator<any>();
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-            name="Pokemon"
-            component={Pokemon}
-            options={{ title: 'Pokemon' }}
+          name="Home"
+          component={Home}
+          options={{ title: "Pokédex" }}
         />
+
         <Stack.Screen
           name="PokemonDetails"
           component={PokemonDetails}
-          options={{ title: 'Detalhes do Pokemon' }}
+          options={{ title: "Detalhes do Pokémon" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
