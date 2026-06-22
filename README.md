@@ -20,6 +20,6 @@ A interface foi projetada com foco na experiência do usuário, trazendo uma nav
 * **Consumo de API:** Integração completa com os endpoints da PokeAPI para requisição e tratamento de dados em tempo real.
 * **Interface Dinâmica & Performance:** Renderização otimizada da listagem principal através do componente `FlatList`.
 * **Filtro de Busca Inteligente:** Sistema de pesquisa dinâmica que permite filtrar Pokémons pelo nome instantaneamente sem realizar novas requisições desnecessárias à API.
-* **Navegação Dinâmica:** Fluxo de rotas bem estruturado para transição entre a listagem principal e a tela de detalhes de cada criatura.
+* **Navegação Dinâmica:** Fluxo de rotas bem estruturado para transição entre a listagem principal e a tela de detalhes de cada pokémon.
 
 ---
